@@ -1,17 +1,17 @@
 import { Given, When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { CustomWorld } from '../support/world';
-import { ProductsPage } from '../pages/ProductsPage';
+import { InventoryPage } from '../pages/InventoryPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 import { DataManager } from '../support/DataManager';
 
-let productsPage: ProductsPage;
+let inventoryPage: InventoryPage;
 let checkoutPage: CheckoutPage;
 
 Given('I am on the cart page', async function (this: CustomWorld) {
-    productsPage = new ProductsPage(this.page);
+    inventoryPage = new InventoryPage(this.page);
     checkoutPage = new CheckoutPage(this.page);
-    await productsPage.goToCart();
+    await inventoryPage.goToCart();
     await expect(this.page).toHaveURL(/cart.html/);
 });
 
