@@ -1,0 +1,32 @@
+{
+    "name": "playwright-cucumber-typescript",
+    "version": "1.0.0",
+    "description": "Test automation framework with Playwright, Cucumber BDD, and TypeScript",
+    "scripts": {
+        "test": "cucumber-js",
+        "test:report": "cucumber-js && node generate-report.js",
+        "test:headed": "HEADLESS=false cucumber-js",
+        "test:debug": "DEBUG=true cucumber-js",
+        "report": "node generate-report.js",
+        "lint": "tsc --noEmit"
+    },
+    "keywords": [
+        "playwright",
+        "cucumber",
+        "bdd",
+        "typescript",
+        "e2e",
+        "testing"
+    ],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@cucumber/cucumber": "^10.3.1",
+        "@playwright/test": "^1.41.1",
+        "@types/node": "^20.11.5",
+        "dotenv": "^17.2.3",
+        "multiple-cucumber-html-reporter": "^3.9.3",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.3.3"
+    }
+}
