@@ -17,6 +17,9 @@ videos/
 
 # Ignore OS files
 .DS_Store
+
+# Sessions
+storageState.json
 Thumbs.db
 
 # Ignore test results

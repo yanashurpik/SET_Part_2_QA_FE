@@ -1,12 +1,35 @@
-import { Before, After, Status, setDefaultTimeout } from '@cucumber/cucumber';
+import { BeforeAll, Before, After, Status, setDefaultTimeout } from '@cucumber/cucumber';
+import { chromium } from '@playwright/test';
 import { CustomWorld } from './world';
+import { LoginPage } from '../pages/LoginPage';
+import * as fs from 'fs';
 
 // Set default timeout to 60 seconds
 setDefaultTimeout(process.env.STEP_TIMEOUT ? parseInt(process.env.STEP_TIMEOUT) : 60000);
 
+const STORAGE_STATE_PATH = 'storageState.json';
+
+// Global setup: Login once and save session
+BeforeAll(async function () {
+    const browser = await chromium.launch({ headless: true });
+    const context = await browser.newContext();
+    const page = await context.newPage();
+    const loginPage = new LoginPage(page);
+
+    await loginPage.navigate();
+    // Using hardcoded standard_user for the global session cache
+    await loginPage.login('standard_user', 'secret_sauce');
+    await context.storageState({ path: STORAGE_STATE_PATH });
+    await browser.close();
+});
+
 // Before each scenario
 Before(async function (this: CustomWorld, scenario) {
-    await this.init();
+    // Only use stored session for non-authentication tests to avoid interference
+    const isAuthTest = scenario.pickle.tags.some(tag => tag.name === '@authentication');
+    const storageState = (!isAuthTest && fs.existsSync(STORAGE_STATE_PATH)) ? STORAGE_STATE_PATH : undefined;
+
+    await this.init(storageState);
 
     // Start tracing for Playwright reports
     if (this.context) {

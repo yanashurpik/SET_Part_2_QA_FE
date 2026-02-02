@@ -27,7 +27,7 @@ export class CustomWorld extends World implements ICustomWorld {
         this._page = value;
     }
 
-    async init(): Promise<void> {
+    async init(storageState?: string): Promise<void> {
         const browserType = process.env.BROWSER;
         const headless = process.env.HEADLESS !== 'false';
 
@@ -45,6 +45,7 @@ export class CustomWorld extends World implements ICustomWorld {
         this.context = await this.browser.newContext({
             viewport: { width: 1280, height: 720 },
             recordVideo: process.env.DEBUG ? { dir: 'videos/' } : undefined,
+            storageState: storageState,
         });
 
         this._page = await this.context.newPage();

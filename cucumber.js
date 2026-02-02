@@ -14,6 +14,7 @@ module.exports = {
         formatOptions: {
             snippetInterface: 'async-await'
         },
+        parallel: 4,
         timeout: process.env.STEP_TIMEOUT ? parseInt(process.env.STEP_TIMEOUT) : 60000
     }
 };

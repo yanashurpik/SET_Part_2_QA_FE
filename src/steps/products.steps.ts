@@ -12,6 +12,15 @@ Given('I am logged in as {string}', async function (this: CustomWorld, userKey: 
     const user = DataManager.getUser(userKey);
     loginPage = new LoginPage(this.page);
     productsPage = new ProductsPage(this.page);
+
+    // Fast path: if session is already active (via storageState)
+    if (userKey === 'standard_user') {
+        await this.page.goto(`${process.env.BASE_URL}/inventory.html`);
+        if (this.page.url().includes('inventory.html')) {
+            return;
+        }
+    }
+
     await loginPage.navigate();
     await loginPage.login(user.username, user.password || '');
     await expect(this.page).toHaveURL(/inventory.html/);

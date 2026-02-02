@@ -1,5 +1,7 @@
 # Playwright + Cucumber BDD + TypeScript (SauceDemo Automation)
 
+![Playwright Tests](https://github.com/${{ github.repository }}/actions/workflows/ci.yml/badge.svg)
+
 A robust, enterprise-grade test automation framework for end-to-end testing of the SauceDemo application. This project uses **Playwright** for browser automation, **Cucumber BDD** for scenario-driven testing, and **TypeScript** for type-safe code.
 
 ## 🌟 Key Features
