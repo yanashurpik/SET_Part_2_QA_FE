@@ -1,11 +1,11 @@
 services:
   tests:
     build: .
-    environment: production
+    environment: env
     env:
-      BASE_URL: ${{ vars.BASE_URL }}
-      BROWSER: ${{ vars.BROWSER }}
-      HEADLESS: ${{ vars.HEADLESS }}
-      STEP_TIMEOUT: ${{ vars.STEP_TIMEOUT }}
+      BASE_URL: ${BASE_URL}
+      BROWSER: ${BROWSER}
+      HEADLESS: ${HEADLESS}
+      STEP_TIMEOUT: ${STEP_TIMEOUT}
     volumes:
       - ./reports:/app/reports
