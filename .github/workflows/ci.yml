@@ -24,7 +24,7 @@ jobs:
       run: npm run lint
 
     - name: Build and run tests in Docker
-      run: docker-compose up --build --exit-code-from tests
+      run: docker compose up --build --exit-code-from tests
       env:
         BASE_URL: ${{ secrets.BASE_URL || 'https://www.saucedemo.com/' }}
         BROWSER: 'chromium'
