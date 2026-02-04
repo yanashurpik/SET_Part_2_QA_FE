@@ -4,14 +4,13 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
-env:
-  BASE_URL: ${{ vars.BASE_URL }}
-  BROWSER: ${{ vars.BROWSER }}
-  HEADLESS: ${{ vars.HEADLESS }}
-  STEP_TIMEOUT: ${{ vars.STEP_TIMEOUT }}
-
 jobs:
   test:
+    env:
+      BASE_URL: ${{ vars.BASE_URL }}
+      BROWSER: ${{ vars.BROWSER }}
+      HEADLESS: ${{ vars.HEADLESS }}
+      STEP_TIMEOUT: ${{ vars.STEP_TIMEOUT }}
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
