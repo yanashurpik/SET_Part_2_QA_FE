@@ -10,7 +10,7 @@ import {
   CheckoutInfo,
   SortOption,
   SORT_OPTIONS,
-} from '../test-data/testData';
+} from '../test-data/TestData';
 
 export class DataManager {
   /**

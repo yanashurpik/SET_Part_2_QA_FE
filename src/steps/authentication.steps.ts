@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 import { CustomWorld } from '../support/world';
 import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
-import { DataManager } from '../support/dataManager';
+import { DataManager } from '../support/DataManager';
 
 let loginPage: LoginPage;
 let inventoryPage: InventoryPage;
