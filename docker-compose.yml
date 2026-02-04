@@ -2,10 +2,5 @@ services:
   tests:
     build: .
     environment: env
-    env:
-      BASE_URL: ${BASE_URL}
-      BROWSER: ${BROWSER}
-      HEADLESS: ${HEADLESS}
-      STEP_TIMEOUT: ${STEP_TIMEOUT}
     volumes:
       - ./reports:/app/reports
