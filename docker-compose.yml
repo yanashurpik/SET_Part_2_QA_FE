@@ -1,7 +1,10 @@
 services:
   tests:
     build: .
-    env_file:
-      - .env
+    environment:
+      - BASE_URL
+      - BROWSER
+      - HEADLESS
+      - STEP_TIMEOUT
     volumes:
       - ./reports:/app/reports
