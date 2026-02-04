@@ -24,7 +24,6 @@ Feature: Shopping Cart Management
     And I remove "backpack" from the cart
     Then the shopping cart badge should not be displayed
 
-  # Edge Cases
   @positive @edge
   Scenario: Add all products to the cart
     When I add all products to the cart

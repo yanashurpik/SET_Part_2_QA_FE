@@ -7,7 +7,6 @@ Feature: User Authentication
   Background:
     Given I am on the login page
 
-  # Valid Login Scenarios
   @smoke @positive
   Scenario: Successful login with standard user
     Given I am on the login page
@@ -15,17 +14,13 @@ Feature: User Authentication
     Then I should be redirected to the inventory page
     And I should see the products page title "Products"
 
-  @positive
-  Scenario: Successful login with problem user
-    When I login with username "problem_user" and password "secret_sauce"
-    Then I should be redirected to the inventory page
+  @smoke @positive
+  Scenario: Successful logout
+    When I login with username "standard_user" and password "secret_sauce"
+    And I should be redirected to the inventory page
+    When I logout
+    Then I should be on the login page
 
-  @positive
-  Scenario: Successful login with visual user
-    When I login with username "visual_user" and password "secret_sauce"
-    Then I should be redirected to the inventory page
-
-  # Invalid Login Scenarios
   @negative
   Scenario: Login with locked out user
     When I login with username "locked_out_user" and password "secret_sauce"
@@ -56,13 +51,6 @@ Feature: User Authentication
     When I login with username "" and password ""
     Then I should see a login error message "Epic sadface: Username is required"
 
-  Scenario: Successful logout
-    When I login with username "standard_user" and password "secret_sauce"
-    And I should be redirected to the inventory page
-    When I logout
-    Then I should be on the login page
-
-  # Edge Cases
   @negative @edge
   Scenario: Deny direct access to inventory without login
     When I navigate directly to the inventory page

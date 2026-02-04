@@ -8,7 +8,9 @@
         "test:headed": "HEADLESS=false cucumber-js",
         "test:debug": "DEBUG=true cucumber-js",
         "report": "node generate-report.js",
-        "lint": "tsc --noEmit"
+        "lint": "eslint src && tsc --noEmit",
+        "format": "prettier --write \"src/**/*.ts\"",
+        "format:check": "prettier --check \"src/**/*.ts\""
     },
     "keywords": [
         "playwright",
@@ -24,9 +26,16 @@
         "@cucumber/cucumber": "^10.3.1",
         "@playwright/test": "^1.41.1",
         "@types/node": "^20.11.5",
+        "@typescript-eslint/eslint-plugin": "^8.54.0",
+        "@typescript-eslint/parser": "^8.54.0",
         "dotenv": "^17.2.3",
+        "eslint": "^9.39.2",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-prettier": "^5.5.5",
         "multiple-cucumber-html-reporter": "^3.9.3",
+        "prettier": "^3.8.1",
         "ts-node": "^10.9.2",
-        "typescript": "^5.3.3"
+        "typescript": "^5.3.3",
+        "typescript-eslint": "^8.54.0"
     }
 }
