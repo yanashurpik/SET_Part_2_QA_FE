@@ -6,11 +6,12 @@ on:
     branches: [ main, master ]
 jobs:
   test:
+    environment: env
     env:
-      BASE_URL: "https://www.saucedemo.com/"
-      BROWSER: "chromium"
-      HEADLESS: "true"
-      STEP_TIMEOUT: 60000
+      BASE_URL: ${{ vars.BASE_URL }}
+      BROWSER: ${{ vars.BROWSER }}
+      HEADLESS: ${{ vars.HEADLESS }}
+      STEP_TIMEOUT: ${{ vars.STEP_TIMEOUT }}
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
